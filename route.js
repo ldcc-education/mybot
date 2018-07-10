@@ -3,8 +3,6 @@ const router = express.Router();
 const util = require('util');
 const moment = require('moment');
 
-const resultCode = require('./utils/respond');
-
 router.use((req, res, next) => {
   console.log(util.format('[Logger]::[Route]::[Access URL %s]::[Access Ip %s]::[Access Time %s]',
                               req.originalUrl,
