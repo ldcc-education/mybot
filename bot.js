@@ -11,7 +11,9 @@ const methodOverride = require('method-override');
 const http = require('http');
 const fileUpload = require('express-fileupload');
 const moment = require('moment-timezone');
+
 const config = require('./config');
+const route = require('./route');
 
 global.app = new express();
 
@@ -29,3 +31,5 @@ http.createServer(app).listen(app.get('port'), () => {
                             config.server.port,
                             moment().tz('Asia/Seoul').format('YYYY-MM-DD HH:mm:ss')));
 });
+
+app.use(route);
