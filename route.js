@@ -3,7 +3,6 @@ const router = express.Router();
 const util = require('util');
 const moment = require('moment');
 
-const { respondJson, respondOnError } = require('./utils/respond');
 const resultCode = require('./utils/respond');
 
 router.use((req, res, next) => {
@@ -17,14 +16,26 @@ router.use((req, res, next) => {
 
 router.get('/keyboard', (req, res) => {
   const testJson = {
-    type: 'button',
-    button: ['대화하기']
+    type: 'buttons',
+    buttons: ['Text 응답', '이미지 응답', '버튼형 응답', '이미지 + 버튼형 응답', '시나리오']
   };
   res.json(testJson);
 });
 
 router.post('/message', (req, res) => {
-
+  const { user_key, type, content } = req.body;
+  const result = {
+    text: `${content}~~~`,
+    photo: {
+      url: "https://mblogthumb-phinf.pstatic.net/MjAxNzEyMDVfMTM0/MDAxNTEyNDQwNTU5MDI4.XEZNrMcevm6OJRrsSu7BnBT_N5RKC7d5w1a1F_bwaC0g.2SHBTee4ourEnsU2ZJ5qQbhtYsGTcrGUccXGEfCivKIg.JPEG.ip7095/a7f1db6695423e998d7346b505801254.jpg?type=w800",
+      width: 640,
+      height: 320
+    }
+  }
+  log("user_key > ", user_key);
+  log("type > ", type);
+  log("content > ", content);
+  res.json(result);
 });
 
 module.exports = router;
