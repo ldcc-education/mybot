@@ -3,16 +3,17 @@ const message = require('./message');
 
 module.exports = function (key, content, context) {
 
+  const defaultContext = {
+    index: 'reservation',
+    name: null,
+    phone: null,
+    date: null,
+    time: null,
+    fortuneTeller: null,
+    fortuneType: null
+  };
+
   function contextCheck (context) {
-    const defaultContext = {
-      index: 'reservation',
-      name: null,
-      phone: null,
-      date: null,
-      time: null,
-      fortuneTeller: null,
-      fortuneType: null
-    };
     return context === null ? defaultContext : setContextBranch(context, content);
   };
 
@@ -22,6 +23,10 @@ module.exports = function (key, content, context) {
   }
 
   function setContextBranch (context, msg) {
+    console.log('$$$$$$$$$$$$$$$$context');
+    console.log(context);
+    console.log('################msg');
+    console.log(msg);
     return go(context,
       match
       .case({index: 'name'})(c => setContext(c, msg))
@@ -39,6 +44,8 @@ module.exports = function (key, content, context) {
   };
 
   function nextBranch (context, msg) {
+    console.log('nextBranch Context >>>>>>>>> ', context);
+    console.log('nextBranch Msg >>>>>>>>> ', msg);
     return go(context,
       match
       .case({index: 'reservation'})(c => reservationBranch(c, msg))
@@ -49,7 +56,7 @@ module.exports = function (key, content, context) {
       .case({index: 'fortuneTeller'})(c => completeCheck(c) ? 'confirm' : 'fortuneType')
       .case({index: 'fortuneType'})(c => 'confirm')
       .case({index: 'confirm'})(_ => confirmBranch(msg))
-      .case({index: 'check'})(c => 'reservation')
+      .case({index: 'check'})(c => reservationBranch(c, msg))
       .case({index: 'newReservation'})(_ => confirmNewReservationBranch(msg))
       .else(_ => 'reservation')
     )
@@ -67,15 +74,17 @@ module.exports = function (key, content, context) {
   };
 
   function confirmNewReservationBranch (msg) {
+    console.log('');
+    // log(go(null, contextCheck, c => setValue(key, c).then(_ => 'name')));
     switch (msg) {
-      case '예': return go(null, contextCheck, c => setValue(key, c), _ => 'name'); break;
+      case '네': return 'name'; break;
       case '아니오': return 'reservation'; break;
     }
   };
 
   function confirmBranch (msg) {
     switch (msg) {
-      case '예약 완료하기' : return 'check'; break;
+      case '예약완료' : return 'check'; break;
       case '예약자명 변경하기': return 'name'; break;
       case '연락처 변경하기': return 'phone'; break;
       case '날짜 변경하기': return 'date'; break;
@@ -86,9 +95,17 @@ module.exports = function (key, content, context) {
   };
 
   function updateRedis (context, index) {
+    console.log('@@@@@@@@@@@@@@@@index');
+    console.log(index);
     context.index = index;
-    return setValue(key, context).then(_ => context);
+    return setValue(key, newReservationCheck(context)).then(_ => context);
   };
+
+  function newReservationCheck (context) {
+    // console.log(context);
+    // console.log(defaultContext);
+    return context.index === 'newReservation' ? defaultContext : context
+  }
 
   function messageFunction (context, index) {
     return index === 'confirm' ? message.confirm(context) : message.check(context);
@@ -102,7 +119,6 @@ module.exports = function (key, content, context) {
   return go(
     context,
     contextCheck,
-    c => setContextBranch(c, content),
     c => updateRedis(c, nextBranch(c, content)),
     nextMessage
   );

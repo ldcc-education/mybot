@@ -2,12 +2,24 @@ const moment = require('moment-timezone');
 const dateRange = 7;
 
 module.exports = {
-  reservation: {
+  basic: {
     type: 'buttons',
     buttons: [
       '예약하기',
       '예약확인'
     ]
+  },
+  reservation: {
+    message: {
+      text: '기본 대화 분기입니다.'
+    },
+    keyboard: {
+      type: 'buttons',
+      buttons: [
+        '예약하기',
+        '예약확인'
+      ]
+    }
   },
   name: {
     message: {
@@ -102,7 +114,7 @@ module.exports = {
       keyboard: {
         type: 'buttons',
         buttons: [
-          '예약 완료하기',
+          '예약완료',
           '예약자명 변경하기',
           '연락처 변경하기',
           '날짜 변경하기',
@@ -135,7 +147,7 @@ module.exports = {
     keyboard: {
       type: 'buttons',
       buttons: [
-        '예',
+        '네',
         '아니오'
       ]
     }

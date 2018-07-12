@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const util = require('util');
 const moment = require('moment');
-
-const { reservation } = require('../scenario/message');
+const { basic } = require('../scenario/message');
 const { getValue, setValue } = require('./redis');
 const flow = require('../scenario/flow');
 
@@ -17,7 +16,7 @@ router.use((req, res, next) => {
 });
 
 router.get('/keyboard', (req, res) => {
-  res.json(reservation);
+  res.json(basic);
 });
 
 router.post('/message', (req, res) => {
