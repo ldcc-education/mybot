@@ -13,7 +13,7 @@ const fileUpload = require('express-fileupload');
 const moment = require('moment-timezone');
 
 const config = require('./config');
-const route = require('./route');
+const route = require('./modules/route');
 
 global.app = new express();
 
@@ -23,7 +23,6 @@ app.use(compression());
 app.use(methodOverride());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.set('trust proxy', config.server.trust_proxy_host);
 app.use(express.static(path.join(__dirname, 'image')));
 http.createServer(app).listen(app.get('port'), () => {
   console.log(util.format('[Logger]::[Process On]::[Pid:%d]::[Server Running At %d]::[%s]::[Started]',

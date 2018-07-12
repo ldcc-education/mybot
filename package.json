@@ -2,12 +2,12 @@
   "name": "ldcc.86.edu.bot",
   "version": "1.0.0",
   "scripts": {
-    "dev:window": "set NODE_ENV=development&& nodemon bot.js",
-    "start:window": "set NODE_ENV=development&& node bot.js",
-    "dev:linux": "export NODE_ENV=development&& nodemon bot.js",
-    "start:linux": "export NODE_ENV=development&& node bot.js",
-    "start:prod:window": "set NODE_ENV=production&& node bot.js",
-    "start:prod:linux": "export NODE_ENV=production&& node bot.js"
+    "dev:window": "set NODE_ENV=development&& nodemon app.js",
+    "start:window": "set NODE_ENV=development&& node app.js",
+    "dev:linux": "export NODE_ENV=development&& nodemon app.js",
+    "start:linux": "export NODE_ENV=development&& node app.js",
+    "start:prod:window": "set NODE_ENV=production&& node app.js",
+    "start:prod:linux": "export NODE_ENV=production&& node app.js"
   },
   "dependencies": {
     "body-parser": "~1.15.2",

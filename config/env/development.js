@@ -14,10 +14,9 @@ module.exports = {
         ConnectionIdle: 10000
     },
     redis: {
-        redisHost: "",
+        redisHost: "52.79.83.252",
         redisPort: 6379,
         redisDatabase: 1,
-        redisPassword: ""
-    },
-    kakao: {}
+        redisPassword: "botredis123$"
+    }
 };
