@@ -3,21 +3,11 @@ const dateRange = 7;
 
 module.exports = {
   reservation: {
-    message: {
-      text: '[Example] 사주 카페 예약 챗봇'
-    },
-    photo: {
-      url: 'http://press.changwon.ac.kr/news/photo/201711/3048432_1474_5633.jpg',
-      width: 640,
-      height: 240
-    },
-    keyboard: {
-      type: 'buttons',
-      buttons: [
-        '예약하기',
-        '예약확인'
-      ]
-    }
+    type: 'buttons',
+    buttons: [
+      '예약하기',
+      '예약확인'
+    ]
   },
   name: {
     message: {
@@ -104,21 +94,13 @@ module.exports = {
     }
   },
   confirm: function (data) {
-    const { name, phone, date, time, fortuneTeller, fortuneType } = data
+    const { name, phone, date, time, fortuneTeller, fortuneType } = data;
     return {
       message: {
-        text: `
-        예약자명: [${name}]
-        연락처: [${phone}]
-        날짜 : [${date}]
-        시간 : [${time}]
-        선생님 : [${fortuneTeller}]
-        사주종류 : [${fortuneType}]
-        위와 같이 예약하시겠습니까?
-        `
+        text: `예약자명: [ ${name} ]\n연락처: [ ${phone} ]\n날짜 : [ ${date} ]\n시간 : [ ${time} ]\n선생님 : [ ${fortuneTeller} ]\n사주종류 : [ ${fortuneType} ]\n위와 같이 예약하시겠습니까?`
       },
       keyboard: {
-        types: 'buttons',
+        type: 'buttons',
         buttons: [
           '예약 완료하기',
           '예약자명 변경하기',
@@ -132,18 +114,17 @@ module.exports = {
     }
   },
   check: function (data) {
-    const { name, phone, date, time, fortuneTeller, fortuneType } = data
+    const { name, phone, date, time, fortuneTeller, fortuneType } = data;
     return {
       message: {
-        text: `
-        예약 내역은 아래와 같습니다.
-        예약자명: [${name}]
-        연락처: [${phone}]
-        날짜 : [${date}]
-        시간 : [${time}]
-        선생님 : [${fortuneTeller}]
-        사주종류 : [${fortuneType}]
-        `
+        text: `예약 내역은 아래와 같습니다.\n예약자명: [ ${name} ]\n연락처: [ ${phone} ]\n날짜 : [ ${date} ]\n시간 : [ ${time} ]\n선생님 : [ ${fortuneTeller} ]\n사주종류 : [ ${fortuneType} ]`
+      },
+      keyboard: {
+        type: 'buttons',
+        buttons: [
+          '예약하기',
+          '예약확인'
+        ]
       }
     }
   },

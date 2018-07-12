@@ -95,7 +95,6 @@ module.exports = function (key, content, context) {
   }
 
   function nextMessage (context) {
-    console.log(context);
     const { index } = context;
     return ['confirm', 'check'].includes(index) ? messageFunction(context, index) : message[index];
   };
@@ -105,6 +104,6 @@ module.exports = function (key, content, context) {
     contextCheck,
     c => setContextBranch(c, content),
     c => updateRedis(c, nextBranch(c, content)),
-    c => nextMessage(c)
+    nextMessage
   );
 };
