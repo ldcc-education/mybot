@@ -20,9 +20,7 @@ router.get('/keyboard', (req, res) => {
 });
 
 router.post('/message', (req, res) => {
-
   const { user_key, content } = req.body;
-
   go(user_key,
     getValue,
     value => flow(user_key, content, value),

@@ -23,10 +23,6 @@ module.exports = function (key, content, context) {
   }
 
   function setContextBranch (context, msg) {
-    console.log('$$$$$$$$$$$$$$$$context');
-    console.log(context);
-    console.log('################msg');
-    console.log(msg);
     return go(context,
       match
       .case({index: 'name'})(c => setContext(c, msg))
@@ -44,8 +40,6 @@ module.exports = function (key, content, context) {
   };
 
   function nextBranch (context, msg) {
-    console.log('nextBranch Context >>>>>>>>> ', context);
-    console.log('nextBranch Msg >>>>>>>>> ', msg);
     return go(context,
       match
       .case({index: 'reservation'})(c => reservationBranch(c, msg))
@@ -69,13 +63,12 @@ module.exports = function (key, content, context) {
   function reservationBranch (context, msg) {
     switch (msg) {
       case '예약하기': return reservationHistoryCheck(context) ? 'newReservation' : 'name'; break;
-      case '예약확인': return 'check'; break;
+      case '예약확인': return completeCheck(context) ? 'check' : 'reservation' ; break;
+      default : return confirmNewReservationBranch(msg); break;
     }
   };
 
   function confirmNewReservationBranch (msg) {
-    console.log('');
-    // log(go(null, contextCheck, c => setValue(key, c).then(_ => 'name')));
     switch (msg) {
       case '네': return 'name'; break;
       case '아니오': return 'reservation'; break;
@@ -95,7 +88,11 @@ module.exports = function (key, content, context) {
   };
 
   function updateRedis (context, index) {
-    console.log('@@@@@@@@@@@@@@@@index');
+    /**
+     * 현재 newReservation 브랜치에 진입하자마자 데이터를 삭제하고 있음
+     * 진입 후 content가 '네'일 경우 삭제 필요
+     */
+    console.log(context.index);
     console.log(index);
     context.index = index;
     return setValue(key, newReservationCheck(context)).then(_ => context);
