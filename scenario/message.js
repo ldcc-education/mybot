@@ -13,7 +13,7 @@ module.exports = {
     message: {
       text: '기본 대화 분기입니다.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/ldcc_logo.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/ldcc_logo.jpg',
         'width': 640,
         'height': 480
       }
@@ -30,7 +30,7 @@ module.exports = {
     message: {
       text: '예약자명을 입력해주세요.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/fortune.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/fortune.jpg',
         'width': 640,
         'height': 480
       }
@@ -40,7 +40,7 @@ module.exports = {
     message: {
       text: '예약자명을 입력해주세요.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/fortune.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/fortune.jpg',
         'width': 640,
         'height': 480
       }
@@ -50,7 +50,7 @@ module.exports = {
     message: {
       text: '연락처를 입력해주세요.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/fortune.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/fortune.jpg',
         'width': 640,
         'height': 480
       }
@@ -66,7 +66,7 @@ module.exports = {
       message: {
         text: '예약 날짜를 선택해주세요.',
         photo: {
-          'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/card.jpg',
+          'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/card.jpg',
           'width': 640,
           'height': 480
         }
@@ -81,7 +81,7 @@ module.exports = {
     message: {
       text: '예약 시간을 선택해주세요.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/card.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/card.jpg',
         'width': 640,
         'height': 480
       }
@@ -106,7 +106,7 @@ module.exports = {
     message: {
       text: '예약하실 역술가 선생님을 선택해주세요.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/cookie.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/cookie.jpg',
         'width': 640,
         'height': 480
       }
@@ -125,7 +125,7 @@ module.exports = {
     message: {
       text: '풀이할 사주종류를 선택해주세요.',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/cookie.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/cookie.jpg',
         'width': 640,
         'height': 480
       }
@@ -147,7 +147,7 @@ module.exports = {
       message: {
         text: `예약자명: [ ${name} ]\n연락처: [ ${phone} ]\n날짜 : [ ${date} ]\n시간 : [ ${time} ]\n선생님 : [ ${fortuneTeller} ]\n사주종류 : [ ${fortuneType} ]\n위와 같이 예약하시겠습니까?`,
         photo: {
-          'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/cookie.jpg',
+          'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/cookie.jpg',
           'width': 640,
           'height': 480
         }
@@ -172,7 +172,7 @@ module.exports = {
       message: {
         text: `예약 내역은 아래와 같습니다.\n예약자명: [ ${name} ]\n연락처: [ ${phone} ]\n날짜 : [ ${date} ]\n시간 : [ ${time} ]\n선생님 : [ ${fortuneTeller} ]\n사주종류 : [ ${fortuneType} ]`,
         photo: {
-          'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/astrology.jpg',
+          'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/astrology.jpg',
           'width': 640,
           'height': 480
         }
@@ -190,7 +190,7 @@ module.exports = {
     message: {
       text: '기존 예약 내역이 있습니다. 기존 예약 내역을 지우고 새로 예약하시겠습니까?',
       photo: {
-        'url': 'http://http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/ldcc_logo.jpg',
+        'url': 'http://ec2-52-79-83-252.ap-northeast-2.compute.amazonaws.com:8080/ldcc_logo.jpg',
         'width': 640,
         'height': 480
       }
