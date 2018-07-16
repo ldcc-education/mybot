@@ -88,20 +88,13 @@ module.exports = function (key, content, context) {
   };
 
   function updateRedis (context, index) {
-    /**
-     * 현재 newReservation 브랜치에 진입하자마자 데이터를 삭제하고 있음
-     * 진입 후 content가 '네'일 경우 삭제 필요
-     */
-    console.log(context.index);
-    console.log(index);
-    context.index = index;
-    return setValue(key, newReservationCheck(context)).then(_ => context);
+    let contextToBeUpdate = newReservationCheck(context, context.index, content);
+    contextToBeUpdate.index = index;
+    return setValue(key, contextToBeUpdate).then(_ => contextToBeUpdate);
   };
 
-  function newReservationCheck (context) {
-    // console.log(context);
-    // console.log(defaultContext);
-    return context.index === 'newReservation' ? defaultContext : context
+  function newReservationCheck (context, ...arr) {
+    return isMatch(['newReservation', '네'], arr) ? defaultContext : context
   }
 
   function messageFunction (context, index) {
