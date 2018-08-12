@@ -19,8 +19,8 @@ const RedisModule = (function () {
       }
   });
   return {
-    getValue: async (key) => await redis.get(key).then(r => JSON.parse(r)).catch(e => e.message),
-    setValue: async (key, value) => await redis.set(key, JSON.stringify(value)).catch(e => e.message)
+    getValue: async (key) => redis.get(key).then(r => JSON.parse(r)).catch(e => e.message),
+    setValue: async (key, value) => redis.set(key, JSON.stringify(value)).catch(e => e.message)
   }
 })();
 
